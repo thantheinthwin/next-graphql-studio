@@ -16,11 +16,14 @@ export const columns: ColumnDef<ProjectsListViewData>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => (
+    cell: ({ row, table }) => (
       <Button
         size="icon"
         variant="ghost"
         className="flex h-fit w-fit p-2 text-red-500 hover:bg-accent hover:text-red-500 focus-visible:ring-0 focus-visible:ring-offset-0 data-[state=open]:bg-muted"
+        onClick={() => {
+          (table.options.meta as any).removeItem(row.getValue("id"));
+        }}
       >
         <Icons.Trash className="h-4 w-4" />
         <span className="sr-only">Open actions</span>
@@ -29,5 +32,8 @@ export const columns: ColumnDef<ProjectsListViewData>[] = [
     meta: {
       cellClass: "w-10",
     },
+  },
+  {
+    accessorKey: "id",
   },
 ];

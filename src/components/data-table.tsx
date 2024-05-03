@@ -3,6 +3,8 @@
 import {
   ColumnDef,
   ColumnMeta,
+  InitialTableState,
+  TableMeta,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -20,6 +22,8 @@ import {
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  meta?: TableMeta<TData>;
+  initialState?: InitialTableState;
 }
 
 interface DataTableColumnMeta<TData, TValue> extends ColumnMeta<TData, TValue> {
@@ -30,11 +34,15 @@ interface DataTableColumnMeta<TData, TValue> extends ColumnMeta<TData, TValue> {
 export function DataTable<TData, TValue>({
   columns,
   data,
+  meta,
+  initialState,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
     columns,
+    meta,
     getCoreRowModel: getCoreRowModel(),
+    initialState,
   });
 
   return (

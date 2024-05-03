@@ -1,19 +1,33 @@
 "use client";
 
 import { ApolloProvider } from "@apollo/client";
-import { ThemeProvider as NextThemesProvider } from "next-themes";
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
 import { PropsWithChildren } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { Toaster } from "sonner";
 import client from "./apollo-client";
 
 export default function Providers({ children }: PropsWithChildren<{}>) {
-  const queryClient = new QueryClient();
-
   return (
     <NextThemesProvider attribute="class" defaultTheme="system" enableSystem>
-      <QueryClientProvider client={queryClient}>
-        <ApolloProvider client={client}>{children}</ApolloProvider>
-      </QueryClientProvider>
+      <ApolloProvider client={client}>
+        {children}
+        <ToastWithTheme />
+      </ApolloProvider>
     </NextThemesProvider>
   );
 }
+
+export type ThemeType = "light" | "dark" | "system";
+
+const ToastWithTheme = () => {
+  const { theme } = useTheme();
+
+  return (
+    <Toaster
+      richColors
+      theme={theme as ThemeType}
+      className="toaster group"
+      style={{ fontFamily: "FontSans" }}
+    />
+  );
+};
