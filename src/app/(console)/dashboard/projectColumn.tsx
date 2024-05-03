@@ -6,10 +6,12 @@ import { ColumnDef } from "@tanstack/react-table";
 export const columns: ColumnDef<ProjectsListViewData>[] = [
   {
     accessorKey: "name",
+    header: () => <div>Name</div>,
     cell: ({ row }) => <div>{row.getValue("name")}</div>,
   },
   {
     accessorKey: "description",
+    header: () => <div>Description</div>,
     cell: ({ row }) => <div>{row.getValue("description")}</div>,
   },
   {
