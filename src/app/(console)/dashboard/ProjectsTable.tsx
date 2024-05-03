@@ -1,8 +1,10 @@
 "use client";
 
+import { DataTable } from "@/components/data-table";
 // pages/index.tsx
+import { ProjectsData, ProjectsListViewData } from "@/packages/types";
 import { gql, useQuery } from "@apollo/client";
-import { ProjectsTable } from "./ProjectsTable";
+import { columns } from "./projectColumn";
 
 const GET_PROJECTS = gql`
   query ListProjects {
@@ -16,19 +18,7 @@ const GET_PROJECTS = gql`
   }
 `;
 
-interface Project {
-  id: string;
-  name: string;
-  description: string;
-}
-
-interface ProjectsData {
-  listProjects: {
-    items: Project[];
-  };
-}
-
-export default function HomePage() {
+export const ProjectsTable: React.FC = () => {
   const { loading, error, data } = useQuery<ProjectsData>(GET_PROJECTS);
 
   if (loading) return <p>Loading...</p>;
@@ -37,8 +27,16 @@ export default function HomePage() {
   const projects = data?.listProjects ? data?.listProjects.items : [];
 
   return (
-    <div className="p-8">
-      <ProjectsTable />
-    </div>
+    <DataTable
+      data={projects.map(
+        (p) =>
+          ({
+            id: p.id,
+            name: p.name,
+            description: p.description,
+          }) as ProjectsListViewData,
+      )}
+      columns={columns}
+    />
   );
-}
+};
