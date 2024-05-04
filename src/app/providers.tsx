@@ -26,7 +26,7 @@ const ToastWithTheme = () => {
     <Toaster
       richColors
       theme={theme as ThemeType}
-      className="toaster group"
+      className="toaster group font-sans"
       style={{ fontFamily: "FontSans" }}
     />
   );
