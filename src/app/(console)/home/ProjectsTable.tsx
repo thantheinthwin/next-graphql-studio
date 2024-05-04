@@ -21,7 +21,6 @@ export const ProjectsTable: React.FC = () => {
     };
   }, []);
 
-  if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
   const projects = data?.listProjects ? data?.listProjects.items : [];
@@ -29,7 +28,9 @@ export const ProjectsTable: React.FC = () => {
   return (
     <>
       <DataTable
+        isLoading={loading}
         meta={tableMeta}
+        columns={columns}
         data={projects.map(
           (p) =>
             ({
@@ -38,7 +39,6 @@ export const ProjectsTable: React.FC = () => {
               description: p.description,
             }) as ProjectsListViewData,
         )}
-        columns={columns}
         initialState={{
           columnVisibility: {
             id: false,

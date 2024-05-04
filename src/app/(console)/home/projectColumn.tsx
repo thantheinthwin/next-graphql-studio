@@ -8,6 +8,9 @@ export const columns: ColumnDef<ProjectsListViewData>[] = [
     accessorKey: "name",
     header: () => <div>Name</div>,
     cell: ({ row }) => <div>{row.getValue("name")}</div>,
+    meta: {
+      headerClass: "w-28 lg:w-80",
+    },
   },
   {
     accessorKey: "description",

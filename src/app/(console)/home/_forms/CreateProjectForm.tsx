@@ -1,5 +1,4 @@
-"use client";
-
+import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -11,14 +10,14 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { CreateProjectFormValues } from "@/packages/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-interface FormValues {
-  name: string;
-  description?: string;
+interface CreateProjectFormProps {
+  onSubmit: (v: CreateProjectFormValues) => Promise<void>;
+  isLoading?: boolean;
 }
 
 const formSchema = z.object({
@@ -26,23 +25,20 @@ const formSchema = z.object({
   description: z.string().optional(),
 });
 
-export const CreateProjectForm = () => {
-  const form = useForm<FormValues>({
+export const CreateProjectForm: React.FC<CreateProjectFormProps> = ({
+  onSubmit,
+  isLoading = false,
+}) => {
+  const form = useForm<CreateProjectFormValues>({
     resolver: zodResolver(formSchema),
     mode: "onBlur",
   });
-
-  const onSubmit = useCallback((input: any) => {
-    console.log(input);
-  }, []);
 
   return (
     <Form {...form}>
       <form
         name="create-project"
-        onSubmit={form.handleSubmit(onSubmit, (fields) =>
-          console.log("invalid", fields),
-        )}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="space-y-6"
       >
         <FormField
@@ -71,7 +67,16 @@ export const CreateProjectForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">
+          {isLoading ? (
+            <div className="flex">
+              loading...
+              <Icons.Spinner className="ml-2 h-4 w-4 animate-spin" />
+            </div>
+          ) : (
+            <div>Submit</div>
+          )}
+        </Button>
       </form>
     </Form>
   );

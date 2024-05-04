@@ -73,7 +73,6 @@ export interface DeleteConfirmationT {
 }
 
 interface DeleteConfirmationProps {
-  // handleDelete: (id: string | number) => Promise<void>;
   gqlQuery: DocumentNode;
   refetchQuery: DocumentNode;
 }

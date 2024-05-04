@@ -15,3 +15,8 @@ export interface ProjectsListViewData {
   name: string;
   description?: string;
 }
+
+export interface CreateProjectFormValues {
+  name: string;
+  description?: string;
+}
