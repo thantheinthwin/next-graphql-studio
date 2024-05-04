@@ -8,6 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { CreateProjectForm } from "./_forms/CreateProjectForm";
 
 export const ProjectsTableToolbar: React.FC = () => {
   return (
@@ -26,7 +27,9 @@ export const ProjectsTableToolbar: React.FC = () => {
               Create a new project to get started.
             </DialogDescription>
           </DialogHeader>
-          <div></div>
+          <div>
+            <CreateProjectForm />
+          </div>
         </DialogContent>
       </Dialog>
     </div>
