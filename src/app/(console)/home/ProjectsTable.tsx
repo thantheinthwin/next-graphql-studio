@@ -4,12 +4,9 @@ import { DataTable } from "@/components/data-table";
 import DeleteConfirmationDialog, {
   DeleteConfirmationT,
 } from "@/components/delete-confirmation-dialog";
-import {
-  DELETE_PROJECT,
-  GET_PROJECTS,
-  UPDATE_PROJECT,
-} from "@/packages/graphql_queries";
-import { ProjectsData, ProjectsListViewData } from "@/packages/types";
+import { DELETE_PROJECT, UPDATE_PROJECT } from "@/graphql/mutations";
+import { GET_PROJECTS } from "@/graphql/queries";
+import { ProjectsData, ProjectsListViewData } from "@/types";
 import { useMutation, useQuery } from "@apollo/client";
 import { useMemo, useRef } from "react";
 import { columns } from "./projectColumn";

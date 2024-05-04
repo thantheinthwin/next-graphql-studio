@@ -1,9 +1,10 @@
-import { CREATE_PROJECT, GET_PROJECTS } from "@/packages/graphql_queries";
-import { CreateProjectFormValues } from "@/packages/types";
+import { CreateProjectFormValues } from "@/types";
 import { useMutation } from "@apollo/client";
 import React, { useCallback } from "react";
 import { toast } from "sonner";
 import { CreateProjectForm } from "./_forms/CreateProjectForm";
+import { CREATE_PROJECT } from "@/graphql/mutations";
+import { GET_PROJECTS } from "@/graphql/queries";
 
 interface CreateProjectProps {
   closeDialog: () => void;

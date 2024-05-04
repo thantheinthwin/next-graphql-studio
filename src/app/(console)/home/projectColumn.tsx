@@ -1,7 +1,7 @@
 import EditableText from "@/components/editable-text";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
-import { ProjectsListViewData } from "@/packages/types";
+import { ProjectsListViewData } from "@/types";
 import { ColumnDef } from "@tanstack/react-table";
 
 export const columns: ColumnDef<ProjectsListViewData>[] = [
