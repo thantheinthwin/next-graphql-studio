@@ -1,8 +1,6 @@
 <h1 align="center" id="title">NextJs X GraphQL Studio</h1>
 
-<p align="center">
-  ![alt text](https://github.com/thantheinthwin/next-graphql-studio/assets/69258587/10b8cf42-6d24-47a8-b03b-56bd755c59a7)
-</p>
+![Screenshot from 2024-05-04 19-08-53](https://github.com/thantheinthwin/next-graphql-studio/assets/69258587/83ce9c08-318f-4b1d-adb4-5c407a41adc1)
 
 <h2>🛠️ Installation Steps:</h2>
 
