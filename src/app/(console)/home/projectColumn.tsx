@@ -7,7 +7,7 @@ import { ColumnDef } from "@tanstack/react-table";
 export const columns: ColumnDef<ProjectsListViewData>[] = [
   {
     accessorKey: "name",
-    header: () => <div>Name</div>,
+    header: () => <div className="ml-3">Name</div>,
     cell: ({ row, table }) => (
       <EditableText
         value={row.getValue("name")}
@@ -18,7 +18,6 @@ export const columns: ColumnDef<ProjectsListViewData>[] = [
     ),
     meta: {
       headerClass: "w-28 lg:w-80",
-      cellClass: "align-top"
     },
   },
   {

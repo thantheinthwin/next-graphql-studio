@@ -62,7 +62,7 @@ const EditableText: React.FC<EditableTextProps> = ({
   }
 
   return (
-    <div className="cursor-pointer" onClick={onEditPress}>
+    <div className="ml-3 cursor-pointer" onClick={onEditPress}>
       <span>{value}</span>
     </div>
   );
