@@ -18,6 +18,7 @@ export const columns: ColumnDef<ProjectsListViewData>[] = [
     ),
     meta: {
       headerClass: "w-28 lg:w-80",
+      cellClass: "align-top"
     },
   },
   {
