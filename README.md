@@ -14,7 +14,7 @@ npm install
 
 <p>3. Set up environments:</p>
 
-- create a new file named ```.env.local``` in the root directory, same level with ```src``` directory
+- create a new file named ```.env.local``` in the root directory, same level with ```src``` directory, and populate it with these environment variables
 
 ```
 NEXT_PUBLIC_GRAPHQL_ENDPOINT=https://odyrf5sb5ve7hlbyi2vu3uygju.appsync-api.ap-southeast-1.amazonaws.com/graphql
