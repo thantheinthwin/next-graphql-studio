@@ -1,3 +1,4 @@
+import EditableText from "@/components/editable-text";
 import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import { ProjectsListViewData } from "@/packages/types";
@@ -7,7 +8,14 @@ export const columns: ColumnDef<ProjectsListViewData>[] = [
   {
     accessorKey: "name",
     header: () => <div>Name</div>,
-    cell: ({ row }) => <div>{row.getValue("name")}</div>,
+    cell: ({ row, table }) => (
+      <EditableText
+        value={row.getValue("name")}
+        onChange={(v) =>
+          (table.options.meta as any).editItem(row.getValue("id"), v)
+        }
+      />
+    ),
     meta: {
       headerClass: "w-28 lg:w-80",
     },
